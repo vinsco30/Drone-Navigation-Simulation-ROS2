@@ -9,7 +9,7 @@ xhost +
 docker run --rm -it --privileged \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v "/dev:/dev" \
--v $(pwd)/PX4-Autopilot-contest:/root/PX4-Autopilot-contest:rw \
+-v $(pwd)/PX4-Autopilot:/root/PX4-Autopilot:rw \
 -v $(pwd)/ros2_ws-src/pkg:/root/ros2_ws/src:rw \
 --env="DISPLAY=$DISPLAY" \
 --network host \
