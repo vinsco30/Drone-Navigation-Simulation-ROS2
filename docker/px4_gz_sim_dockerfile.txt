@@ -25,16 +25,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
     && add-apt-repository universe 
 
-# # Micro-XRCE-DDS-Agent
-
-RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
-    && cd Micro-XRCE-DDS-Agent \
-    && mkdir build \
-	&& cd build \
-	&& cmake .. \
-	&& make \
-	&& sudo make install \
-	&& sudo ldconfig /usr/local/lib/
 
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
@@ -59,12 +49,24 @@ RUN apt update && apt-get install -y --no-install-recommends \
 RUN apt update && apt-get install -y --no-install-recommends \     
     libcanberra-gtk-module libcanberra-gtk3-module
 
+# # Micro-XRCE-DDS-Agent
+
+RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
+    && cd Micro-XRCE-DDS-Agent \
+    && mkdir build \
+	&& cd build \
+	&& cmake .. \
+	&& make \
+	&& sudo make install \
+	&& sudo ldconfig /usr/local/lib/
+
 # # ROS2 workspace
 
 RUN mkdir -p ~/ros2_ws/src \
     && cd ~/ros2_ws/src \
     && git clone --single-branch -b release/1.14 https://github.com/PX4/px4_msgs.git \
     && git clone --single-branch -b release/v1.14 https://github.com/PX4/px4_ros_com.git \
+    && git clone --single-branch -b ROS2_field_description https://github.com/Prisma-Drone-Team/leonardo_field_description.git \
     && cd .. \	
     && . /opt/ros/humble/setup.sh \
     && colcon build
@@ -77,6 +79,10 @@ USER root
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 RUN echo "source /root/ros2_ws/install/local_setup.bash" >> .bashrc
+ENV GZ_SIM_RESOURCE_PATH=/root/ros2_ws/src/leonardo_field_description/models
+ENV PX4_GZ_MODELS=/root/PX4-Autopilot/Tools/simulation/gz/models
+ENV PX4_GZ_WORLDS=/root/PX4-Autopilot/Tools/simulation/gz/worlds
+ENV GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$PX4_GZ_MODELS:$PX4_GZ_WORLDS
 
 
 
