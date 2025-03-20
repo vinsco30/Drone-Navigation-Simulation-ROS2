@@ -15,7 +15,7 @@ Docker configuration for autonomous navigation in GPS-denied environment with PX
 A step by step series of examples that tell you how to get a development environment running:
 
 1. Clone the repository to your local machine.
-3. Clone the PX4 Firmware with `git clone --single-branch -b release/1.14 git@github.com:PX4/PX4-Autopilot.git --recursive`
+3. Clone the PX4 Firmware with `git clone --single-branch -b release/1.14 git@github.com:vinsco30/PX4-Autopilot-PRISMA.git --recursive`
 4. Build the docker imagege with `cd docker && docker build -t px4-ros2-gz -f px4_gz_sim_dockerfile.txt .`
 5. Run the container with `./run_cnt.sh`.
 
@@ -27,4 +27,4 @@ If you want to run the simulation in the Contest world, you have to start the si
 
 Then to spawn the x500 drone with depth camera you can run
 
-    $ PX4_SYS_AUTOSTART=4002 PX4_GZ_MODEL=x500_depth PX4_GZ_MODEL_POSE="-9.5 -3.5 0.5" ./PX4-Autopilot/build/px4_sitl_default/bin/px4 $
+    $ PX4_SYS_AUTOSTART=4002 PX4_GZ_MODEL=x500_depth PX4_GZ_MODEL_POSE="-9.5 -3.5 0.5" ./PX4-Autopilot-PRISMA/build/px4_sitl_default/bin/px4 $
