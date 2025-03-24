@@ -76,6 +76,15 @@ RUN mkdir -p ~/ros2_ws/src \
 RUN  git config --global --add safe.directory '*'
 USER root
 
+# Additional packages
+RUN apt update && apt install -y --no-install-recommends \    
+    aptitude \
+    tmux \
+    tmuxp
+
+RUN wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh \
+    && sudo bash ./install_geographiclib_datasets.sh  
+
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 RUN echo "source /root/ros2_ws/install/local_setup.bash" >> .bashrc
