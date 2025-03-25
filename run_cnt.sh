@@ -12,7 +12,7 @@ docker run --rm -it --privileged \
 -v $(pwd)/PX4-Autopilot:/root/PX4-Autopilot:rw \
 -v $(pwd)/PX4-Autopilot-PRISMA:/root/PX4-Autopilot-PRISMA:rw \
 -v $(pwd)/ros2_ws-src/pkg:/root/ros2_ws/src:rw \
--v $(pwd)/docker/start.sh:/root/start.sh:rw \
+-v $(pwd)/start:/root/start:rw \
 --env="DISPLAY=$DISPLAY" \
 --network host \
 --name=px4-ros2-gz px4-ros2-gz bash
