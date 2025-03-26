@@ -47,3 +47,9 @@ which will start a tmux session with 4 screen opening gz, rviz2 and running the 
 
 To stop the session you should kill the gz simulator and then type `ctrl+b :kill-server`.
 
+#### Headless simulation
+If you need to tun simulation with depth camera, you can use headless simulation without GUI. You can start it running the following script
+
+    ./start_depth_headless.sh
+    
+
