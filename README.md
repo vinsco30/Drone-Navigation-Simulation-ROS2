@@ -52,4 +52,5 @@ If you need to tun simulation with depth camera, you can use headless simulation
 
     ./start_depth_headless.sh
     
+## TODO: implement mapping with depth camera
 
