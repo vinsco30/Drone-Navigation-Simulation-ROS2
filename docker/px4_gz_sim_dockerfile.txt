@@ -89,8 +89,8 @@ ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 RUN echo "source /root/ros2_ws/install/local_setup.bash" >> .bashrc
 ENV GZ_SIM_RESOURCE_PATH=/root/ros2_ws/src/leonardo_field_description/models
-ENV PX4_GZ_MODELS=/root/PX4-Autopilot/Tools/simulation/gz/models
-ENV PX4_GZ_WORLDS=/root/PX4-Autopilot/Tools/simulation/gz/worlds
+ENV PX4_GZ_MODELS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/models
+ENV PX4_GZ_WORLDS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/worlds
 ENV GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$PX4_GZ_MODELS:$PX4_GZ_WORLDS
 
 

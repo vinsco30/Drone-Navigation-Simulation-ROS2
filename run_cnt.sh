@@ -9,7 +9,6 @@ xhost +
 docker run --rm -it --privileged \
 -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
 -v "/dev:/dev" \
--v $(pwd)/PX4-Autopilot:/root/PX4-Autopilot:rw \
 -v $(pwd)/PX4-Autopilot-PRISMA:/root/PX4-Autopilot-PRISMA:rw \
 -v $(pwd)/ros2_ws-src/pkg:/root/ros2_ws/src:rw \
 -v $(pwd)/start:/root/start:rw \
