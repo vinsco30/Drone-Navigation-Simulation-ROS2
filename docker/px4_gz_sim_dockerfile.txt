@@ -64,7 +64,7 @@ RUN git clone https://github.com/eProsima/Micro-XRCE-DDS-Agent.git \
 
 RUN mkdir -p ~/ros2_ws/src \
     && cd ~/ros2_ws/src \
-    && git clone --single-branch -b release/1.14 https://github.com/PX4/px4_msgs.git \
+    && git clone --single-branch -b release/1.14 https://github.com/vinsco30/px4_msgs_custom.git px4_msgs \
     && git clone --single-branch -b release/v1.14 https://github.com/PX4/px4_ros_com.git \
     && git clone --single-branch -b ROS2_field_description https://github.com/Prisma-Drone-Team/leonardo_field_description.git \
     && cd .. \	
@@ -89,9 +89,10 @@ ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
 RUN echo "source /root/ros2_ws/install/local_setup.bash" >> .bashrc
 ENV GZ_SIM_RESOURCE_PATH=/root/ros2_ws/src/leonardo_field_description/models
+ENV FLAMINGO_GZ_MODELS=/root/ros2_ws/src/flamingo_ros2_bringup/models
 ENV PX4_GZ_MODELS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/models
 ENV PX4_GZ_WORLDS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/worlds
-ENV GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$PX4_GZ_MODELS:$PX4_GZ_WORLDS
+ENV GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$PX4_GZ_MODELS:$PX4_GZ_WORLDS:$FLAMINGO_GZ_MODELS
 
 
 

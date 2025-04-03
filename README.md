@@ -52,5 +52,16 @@ If you need to tun simulation with depth camera, you can use headless simulation
 
     ./start_depth_headless.sh
     
+### Bird Diverter Installation Simulation
+In addition, it is possible to tun the simulation for the bird diverter installation application. The scripts provided will start a simulation in `gz-sim` with the custom Flamingo drone as an adaptation of the classic X500 frame equipped with a tool composed by a fixed stick mounted underneath the drone and a force sensor located at the tip of the stick.
+Run:
+
+    ./start_flamingo.sh 
+or
+
+    ./start_flamingo_headless.sh
+To start the simulation. A depth camera (OakD-Lite) too is spawned to detect possible high voltage cables.
+
+![Simulation environment for bird diverter installation test](/docker/gz_flamingo.png)
 ## TODO: implement mapping with depth camera
 
