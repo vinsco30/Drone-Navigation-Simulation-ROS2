@@ -94,9 +94,6 @@ ENV PX4_GZ_MODELS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/models
 ENV PX4_GZ_WORLDS=/root/PX4-Autopilot-PRISMA/Tools/simulation/gz/worlds
 ENV GZ_SIM_RESOURCE_PATH=$GZ_SIM_RESOURCE_PATH:$PX4_GZ_MODELS:$PX4_GZ_WORLDS:$FLAMINGO_GZ_MODELS
 
-# For gz entity wrench interfaces
-RUN apt update && apt install -y --no-install-recommends \    
-    ros-humble-ros-gz-interfaces
 
 
 
