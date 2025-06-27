@@ -83,7 +83,22 @@ RUN apt update && apt install -y --no-install-recommends \
     tmuxp
 
 RUN wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh \
-    && sudo bash ./install_geographiclib_datasets.sh  
+    && sudo bash ./install_geographiclib_datasets.sh 
+
+RUN git clone --single-branch -b fcl-0.5 https://github.com/flexible-collision-library/fcl.git	\
+    && cd fcl \
+    && mkdir build \
+    && cd build \
+    && cmake .. \
+    && make \
+    && make install  
+
+RUN git clone --single-branch -b 1.6.0 https://github.com/ompl/ompl.git \
+    && cd ompl \
+    && mkdir -p build/Release \
+    && cd build/Release \
+    && cmake ../.. \
+    && make -j 4
 
 ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 
